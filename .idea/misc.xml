@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/practice/Dogs/app/src/main/res/layout/fragment_detail.xml" value="0.29322916666666665" />
+        <entry key="..\:/practice/Dogs/app/src/main/res/layout/fragment_list.xml" value="0.17300724637681159" />
+        <entry key="..\:/practice/Dogs/app/src/main/res/layout/item_dog.xml" value="0.2921875" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1157548125633232" />
         <entry key="app/src/main/res/layout/fragment_detail.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/fragment_list.xml" value="0.25" />

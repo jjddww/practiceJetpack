@@ -8,6 +8,58 @@
     android:layout_height="match_parent"
     android:background="@color/gray_cc">
 
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/dogThumbnail"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="60dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            style="@style/TitleTextAttr"
+            android:id="@+id/dogName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dogThumbnail"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            tools:text="welsh corgi"/>
+
+        <TextView
+            android:id="@+id/dogPurpose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/lifeSpanTextAttr"
+            android:layout_below="@id/dogName"
+            android:paddingTop="10dp"/>
+
+        <TextView
+            android:id="@+id/dogLifeSpan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/lifeSpanTextAttr"
+            android:layout_below="@id/dogPurpose"
+            android:paddingTop="10dp"/>
+
+        <TextView
+            android:id="@+id/dogTemperament"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            style="@style/lifeSpanTextAttr"
+            android:layout_below="@id/dogLifeSpan"
+            android:paddingTop="10dp"/>
+
+
+    </RelativeLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/listButton"
         android:layout_width="wrap_content"
