@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -11,17 +12,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.dogs.R
 import model.DogBreed
 
-class DogListAdapter : ListAdapter<DogBreed, DogListAdapter.DogItemViewHolder> (diffUtil) {
+class DogListAdapter(val clickListener: (View, DogBreed) -> Unit) : ListAdapter<DogBreed, DogListAdapter.DogItemViewHolder> (diffUtil) {
 
     inner class DogItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         private val dogImg = itemView.findViewById<ImageView>(R.id.dogImage)
         private val dogName = itemView.findViewById<TextView>(R.id.dogName)
         private val dogLifespan = itemView.findViewById<TextView>(R.id.dogLifeSpan)
+        private val rootView = itemView.findViewById<LinearLayout>(R.id.rootView)
 
         fun bind(dogBreed: DogBreed){
             dogImg.setImageResource(R.drawable.ic_launcher_background)
             dogName.text = dogBreed.dogBreed
             dogLifespan.text = dogBreed.lifeSpan
+            rootView.setOnClickListener{
+                clickListener(it, dogBreed)
+            }
         }
     }
 

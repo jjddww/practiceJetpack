@@ -10,7 +10,8 @@
         android:label="ListFragment" >
         <action
             android:id="@+id/toDetailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment" >
+        </action>
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -19,9 +20,9 @@
         <action
             android:id="@+id/toListFragment"
             app:destination="@id/listFragment" />
-
         <argument
-            android:name="dogUuid"
-            android:defaultValue="5"/>
+            android:name="dogData"
+            app:argType="model.DogBreed" />
+
     </fragment>
 </navigation>

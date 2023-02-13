@@ -44,20 +44,23 @@ class ListFragment : Fragment() {
         viewModel.refresh()
 
         dogList.apply {
-            dogAdapter = DogListAdapter()
+            dogAdapter = DogListAdapter(clickListener = { view, data ->
+                val action = ListFragmentDirections.toDetailFragment(data)
+                Navigation.findNavController(view).navigate(action)
+            })
             this.layoutManager = LinearLayoutManager(context)
             this.adapter = dogAdapter
         }
 
-        arguments?.let {
-            dogUuid = DetailFragmentArgs.fromBundle(it).dogUuid
-            Log.d("zzzz", dogUuid.toString())
-        }
+//        arguments?.let {
+//            dogUuid = DetailFragmentArgs.fromBundle(it).dogUuid
+//            Log.d("zzzz", dogUuid.toString())
+//        }
 
-        view.findViewById<FloatingActionButton>(R.id.detailButton).setOnClickListener {
-            val action = ListFragmentDirections.toDetailFragment()
-            Navigation.findNavController(it).navigate(action)
-        }
+//        view.findViewById<FloatingActionButton>(R.id.detailButton).setOnClickListener {
+//            val action = ListFragmentDirections.toDetailFragment()
+//            Navigation.findNavController(it).navigate(action)
+//        }
 
         observableViewModel()
     }
