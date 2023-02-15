@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.dogs.R
 import model.DogBreed
+import util.getProgressDrawable
+import util.loadImage
 
 class DogListAdapter(val clickListener: (View, DogBreed) -> Unit) : ListAdapter<DogBreed, DogListAdapter.DogItemViewHolder> (diffUtil) {
 
@@ -24,6 +26,7 @@ class DogListAdapter(val clickListener: (View, DogBreed) -> Unit) : ListAdapter<
             dogImg.setImageResource(R.drawable.ic_launcher_background)
             dogName.text = dogBreed.dogBreed
             dogLifespan.text = dogBreed.lifeSpan
+            dogImg.loadImage(dogBreed.imageUrl, getProgressDrawable(itemView.context))
             rootView.setOnClickListener{
                 clickListener(it, dogBreed)
             }
