@@ -14,6 +14,7 @@ import androidx.lifecycle.get
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.dogs.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import viewmodel.ListViewModel
@@ -26,6 +27,7 @@ class ListFragment : Fragment() {
     private lateinit var viewModel: ListViewModel
     private lateinit var errorMessage: TextView
     private lateinit var progressBar: ProgressBar
+    private lateinit var refreshLayout: SwipeRefreshLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,8 +42,8 @@ class ListFragment : Fragment() {
         errorMessage = view.findViewById(R.id.error_msg)
         progressBar = view.findViewById(R.id.loadingProgress)
         dogList = view.findViewById(R.id.dogList)
+        refreshLayout = view.findViewById(R.id.swipeLayout)
         viewModel = ViewModelProvider(this)[ListViewModel::class.java]
-        viewModel.refresh()
 
         dogList.apply {
             dogAdapter = DogListAdapter(clickListener = { view, data ->
@@ -61,6 +63,15 @@ class ListFragment : Fragment() {
 //            val action = ListFragmentDirections.toDetailFragment()
 //            Navigation.findNavController(it).navigate(action)
 //        }
+        viewModel.refresh()
+
+        refreshLayout.setOnRefreshListener {
+            dogList.visibility = View.GONE
+            errorMessage.visibility = View.GONE
+            progressBar.visibility = View.VISIBLE
+            viewModel.refresh()
+            refreshLayout.isRefreshing = false
+        }
 
         observableViewModel()
     }
